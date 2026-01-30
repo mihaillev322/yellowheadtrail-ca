@@ -1,0 +1,436 @@
+/* CSS Variables from Tête Jaune Editorial palette */
+:root {
+  --c-bg: #F6F3EE;
+  --c-surface: #FFFFFF;
+  --c-text: #1E1F22;
+  --c-muted: #5A616B;
+  --c-border: #D7D0C6;
+  --c-primary: #2B5D4A;
+  --c-secondary: #6A4C93;
+  --c-accent: #D9A441;
+  --radius: 14px;
+  --shadow: 0 10px 30px rgba(30, 31, 34, 0.10);
+  --maxw: 1100px;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-serif: Georgia, "Times New Roman", serif;
+}
+
+/* Base and reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-serif);
+  background: var(--c-bg);
+  color: var(--c-text);
+  line-height: 1.7;
+  font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+}
+
+/* Typography scale using clamp() for editorial feel */
+h1 {
+  font-size: clamp(1.875rem, 1.5rem + 1.5vw, 2.75rem);
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  color: var(--c-primary);
+  font-weight: 700;
+}
+
+h2 {
+  font-size: clamp(1.5rem, 1.25rem + 1vw, 2rem);
+  line-height: 1.3;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  color: var(--c-primary);
+  font-weight: 600;
+}
+
+h3 {
+  font-size: clamp(1.25rem, 1.125rem + 0.5vw, 1.5rem);
+  line-height: 1.4;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--c-secondary);
+  font-weight: 600;
+}
+
+p {
+  margin-bottom: 1rem;
+  max-width: 70ch;
+}
+
+ul, ol {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+li {
+  margin-bottom: 0.5rem;
+}
+
+a {
+  color: var(--c-primary);
+  text-decoration: underline;
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+a:hover {
+  color: var(--c-secondary);
+  text-decoration-color: var(--c-accent);
+}
+
+a:focus-visible {
+  outline: 2px solid var(--c-accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Header and navigation */
+header {
+  background: var(--c-surface);
+  border-bottom: 2px solid var(--c-border);
+  padding: 1rem 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.site-name {
+  font-size: clamp(1.25rem, 1.125rem + 0.5vw, 1.5rem);
+  font-weight: 700;
+  color: var(--c-primary);
+  font-family: var(--font-sans);
+}
+
+nav {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+nav a {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--c-text);
+  transition: color 0.2s ease;
+}
+
+nav a:hover {
+  color: var(--c-primary);
+}
+
+nav a:focus-visible {
+  outline: 2px solid var(--c-accent);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+/* Breadcrumbs */
+.breadcrumbs {
+  background: var(--c-surface);
+  padding: 0.75rem 1.5rem;
+  border-bottom: 1px solid var(--c-border);
+  font-size: 0.9rem;
+  font-family: var(--font-sans);
+}
+
+.breadcrumbs a {
+  color: var(--c-primary);
+  text-decoration: none;
+}
+
+.breadcrumbs a:hover {
+  text-decoration: underline;
+}
+
+.breadcrumbs span {
+  color: var(--c-muted);
+}
+
+/* Main layout: mobile-first CSS Grid */
+main {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  padding: 2rem 1.5rem;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  main {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 1024px) {
+  main {
+    grid-template-columns: 2fr 1fr;
+    gap: 3rem;
+  }
+}
+
+article {
+  background: var(--c-surface);
+  padding: 2rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+aside {
+  background: var(--c-surface);
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  align-self: start;
+  position: sticky;
+  top: 1rem;
+}
+
+@media (max-width: 1023px) {
+  aside {
+    position: static;
+  }
+}
+
+aside h2 {
+  font-size: 1.125rem;
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  color: var(--c-secondary);
+}
+
+aside ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+aside li {
+  margin-bottom: 0.5rem;
+}
+
+/* Blockquote styling */
+blockquote {
+  margin: 1.5rem 0;
+  padding: 1.25rem 1.5rem;
+  background: var(--c-bg);
+  border-left: 4px solid var(--c-accent);
+  border-radius: var(--radius);
+  font-style: italic;
+  color: var(--c-muted);
+}
+
+blockquote p {
+  margin-bottom: 0;
+}
+
+/* Table styling with sticky header and horizontal scroll */
+.table-wrapper {
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--c-surface);
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+}
+
+caption {
+  font-weight: 600;
+  text-align: left;
+  padding: 1rem;
+  background: var(--c-primary);
+  color: var(--c-surface);
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+
+thead {
+  background: var(--c-secondary);
+  color: var(--c-surface);
+}
+
+@media (min-width: 1024px) {
+  thead {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+}
+
+th {
+  padding: 0.875rem 1rem;
+  text-align: left;
+  font-weight: 600;
+  border-bottom: 2px solid var(--c-border);
+}
+
+td {
+  padding: 0.875rem 1rem;
+  border-bottom: 1px solid var(--c-border);
+}
+
+tbody tr {
+  transition: background-color 0.2s ease;
+}
+
+tbody tr:hover {
+  background: var(--c-bg);
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Details/summary accordion with animated open state */
+details {
+  margin-bottom: 1rem;
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius);
+  background: var(--c-surface);
+  overflow: hidden;
+}
+
+summary {
+  padding: 1rem 1.25rem;
+  font-weight: 600;
+  cursor: pointer;
+  user-select: none;
+  background: var(--c-bg);
+  transition: background-color 0.2s ease, color 0.2s ease;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+summary::before {
+  content: '▸';
+  display: inline-block;
+  transition: transform 0.3s ease;
+  color: var(--c-primary);
+  font-size: 1.125rem;
+}
+
+details[open] summary::before {
+  transform: rotate(90deg);
+}
+
+summary:hover {
+  background: var(--c-primary);
+  color: var(--c-surface);
+}
+
+summary:hover::before {
+  color: var(--c-surface);
+}
+
+summary:focus-visible {
+  outline: 2px solid var(--c-accent);
+  outline-offset: 2px;
+}
+
+details p {
+  padding: 1rem 1.25rem;
+  margin-bottom: 0;
+}
+
+/* Disable animations for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  summary::before {
+    transition: none;
+  }
+  details[open] summary::before {
+    transform: none;
+  }
+}
+
+/* Footer */
+footer {
+  background: var(--c-surface);
+  border-top: 2px solid var(--c-border);
+  padding: 1.5rem;
+  text-align: center;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  color: var(--c-muted);
+}
+
+footer p {
+  margin: 0;
+  max-width: none;
+}
+
+/* Section spacing */
+section {
+  margin-bottom: 2rem;
+}
+
+section:last-child {
+  margin-bottom: 0;
+}
+
+/* Ensure comfortable measure for readability */
+article > p,
+article > section > p {
+  max-width: 70ch;
+}
+
+/* Focus-visible for all interactive elements */
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--c-accent);
+  outline-offset: 2px;
+}
+
+/* Responsive images (if ever added, though plan forbids them) */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Utility: visually hidden but accessible to screen readers */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
